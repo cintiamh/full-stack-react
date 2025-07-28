@@ -38,3 +38,10 @@ Automatically fix with Eslint
 ```
 $ npx eslint src --fix
 ```
+
+Adding lint script
+
+```
+$ npm pkg set scripts.lint="eslint src"
+$ npm run lint
+```
