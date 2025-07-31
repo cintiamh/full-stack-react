@@ -104,3 +104,9 @@ ch2> db.users.find()
   }
 ]
 ```
+
+## Testing
+
+```
+$ npm install --save-dev jest mongodb-memory-server
+```
