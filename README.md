@@ -110,3 +110,42 @@ ch2> db.users.find()
 ```
 $ npm install --save-dev jest mongodb-memory-server
 ```
+
+VS Code
+Install `Orta.vscode-jest` extension
+
+## APIs
+
+- GET: 200 OK
+- POST: 201 Created
+- PUT: 200 OK, 204 No Content, 201 Created
+- PATCH: 200 OK, 204 No Content
+- DELETE: 200 OK, 204 No Content
+
+Routes: `/api/v1/`
+
+Framework:
+
+- Express: mature
+- Koa: smaller, more expressive, and more robust, same express team
+- Fastify: efficiency and low overhead.
+
+```
+$ npm install express
+```
+
+## Environment variables
+
+```
+$ npm install dotenv
+```
+
+Test in browser
+
+```
+fetch('http://localhost:3001/api/v1/posts', {headers:{'Content-Type': 'application/json'}, method: 'POST', body: JSON.stringify({title: 'Test Post'})}).then(res =>res.json()).then(console.log)
+
+fetch('http://localhost:3001/api/v1/posts/688d0803a35d223d01812e0c', {headers:{'Content-Type': 'application/json'}, method: 'PATCH', body: JSON.stringify({title: 'Test Post Changed'})}).then(res =>res.json()).then(console.log)
+
+fetch('http://localhost:3001/api/v1/posts/688d0803a35d223d01812e0c', {method: 'DELETE'}).then(res =>res.status).then(console.log)
+```
