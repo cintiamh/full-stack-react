@@ -149,3 +149,16 @@ fetch('http://localhost:3001/api/v1/posts/688d0803a35d223d01812e0c', {headers:{'
 
 fetch('http://localhost:3001/api/v1/posts/688d0803a35d223d01812e0c', {method: 'DELETE'}).then(res =>res.status).then(console.log)
 ```
+
+## Storybook for components
+
+Use storybook to manage components
+https://storybook.js.org/
+
+## TanStack Query for React
+
+aka React Query. keep state and server in sync.
+
+```
+$ npm install @tanstack/react-query
+```
