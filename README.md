@@ -162,3 +162,49 @@ aka React Query. keep state and server in sync.
 ```
 $ npm install @tanstack/react-query
 ```
+
+# Docker
+
+## Dockerfile
+
+create a new Dockerfile for the backend.
+
+```
+$ touch backend/Dockerfile
+```
+
+Dockerfile:
+
+```
+FROM node:20
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm install
+COPY . .
+CMD ["npm", "start"]
+```
+
+.dockerignore
+
+```
+node_modules
+.env*
+```
+
+Build the docker image
+
+```
+$ docker image build -t blog-backend backend/
+```
+
+List all images:
+
+```
+$ docker images
+```
+
+Start the backend docker:
+
+```
+$ docker run -it -e PORT=3001 -e DATABASE_URL=mongodb://host.docker.internal:27017/blog -p 3001:3001 blog-backend
+```
