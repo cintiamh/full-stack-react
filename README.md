@@ -208,3 +208,46 @@ Start the backend docker:
 ```
 $ docker run -it -e PORT=3001 -e DATABASE_URL=mongodb://host.docker.internal:27017/blog -p 3001:3001 blog-backend
 ```
+
+### Front end
+
+Dockerfile
+
+```
+FROM node:20 AS build
+ARG VITE_BACKEND_URL=http://localhost:3001/api/v1
+WORKDIR /build
+COPY package.json .
+COPY package-lock.json .
+RUN npm install
+COPY . .
+RUN npm run build
+FROM nginx AS final
+WORKDIR /usr/share/nginx/html
+COPY --from=build /build/dist .
+```
+
+.dockerignore
+
+```
+node_modules
+.env*
+backend
+.vscode
+.git
+.husky
+.commitlintrc.json
+.DS_Store
+```
+
+Build
+
+```
+$ docker build -t blog-frontend .
+```
+
+Run
+
+```
+$ docker run -it -p 3000:80 blog-frontend
+```
