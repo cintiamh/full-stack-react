@@ -289,3 +289,9 @@ services:
 ```
 $ docker compose up
 ```
+
+To clean up all stopped containers
+
+```
+$ docker container prune
+```
